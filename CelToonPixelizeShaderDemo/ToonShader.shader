@@ -1,6 +1,6 @@
 shader_type canvas_item;
-uniform float nColors = .0;
-
+uniform float nColors = 5;
+uniform bool use_hsv = false;
 vec3 lerp(vec3 colorone, vec3 colortwo, float value)
 {
 	return (colorone + value*(colortwo-colorone));
@@ -20,17 +20,17 @@ vec3 HSVToRGB( vec3 HSV ){
     return HSV.z * lerp(k.xxx, clamp(p - k.xxx, 0.0, 1.0), HSV.y);
 }
 void fragment(){
-	float vx_offset = 1.0;
 	vec2 uv = UV;
    	vec3 tc = texture(TEXTURE, uv).rgb;
-    vec2 coord = vec2(0.,0.);
     
     float cutColor = 1./nColors;
-    tc  = cutColor*floor(tc/cutColor);
-    
-  	if(tc.g > (tc.r + tc.b)*0.7)
-	{
-		tc.rgb = vec3(0.2,0.2,0.2);
+	if (use_hsv){
+		tc = RGBToHSV(tc);
+		vec2 target_c = cutColor*floor(tc.gb/cutColor);
+		tc = HSVToRGB(vec3(tc.r,target_c));
 	}
-   COLOR = vec4(tc, 1.0);
+	else{
+    	tc  = cutColor*floor(tc/cutColor);
+	}
+	COLOR = vec4(tc, 1.0);
 }

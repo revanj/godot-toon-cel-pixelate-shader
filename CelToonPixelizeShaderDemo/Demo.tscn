@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://ToonShaderHSV.shader" type="Shader" id=1]
+[ext_resource path="res://ToonShader.shader" type="Shader" id=1]
 [ext_resource path="res://Pixelate.shader" type="Shader" id=2]
 [ext_resource path="res://unnamed.jpg" type="Texture" id=3]
 [ext_resource path="res://Capture.gd" type="Script" id=4]
@@ -8,6 +8,7 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
 shader_param/nColors = 5.394
+shader_param/use_hsv = false
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 2 )
