@@ -7,13 +7,13 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
-shader_param/nColors = 5.394
-shader_param/use_hsv = false
+shader_param/nColors = 5.209
+shader_param/use_hsv = true
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 2 )
-shader_param/size_x = 0.0025
-shader_param/size_y = 0.001
+shader_param/size_x = 0.003
+shader_param/size_y = 0.005
 
 [node name="Demo" type="Control"]
 anchor_right = 1.0
